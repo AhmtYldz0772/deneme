@@ -1,0 +1,68 @@
+<div class="container">
+  <button class="btn btn-success mt-4 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="fa fa-plus"></i> Cihaz Oluştur
+  </button>
+
+  <hr>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Cihaz eUI ile ara">
+    </div>
+  </div>
+
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th scope="col">Cihaz Adı</th>
+        <th scope="col">Cihaz EUI</th>
+        <th scope="col">İşlemler</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of filterProducts()">
+        <td>{{product.CihazAdi}}</td>
+        <td>{{product.CihazeUI}}</td>
+        <td>
+          
+          <button class="btn my-custom-warning" (click)="CihazUrunEkle(product)">
+            <i class="fa fa-memory"></i> Cihaz İşlem Yap
+          </button>
+          &nbsp;&nbsp;
+          <button class="btn my-custom-danger" (click)="CihazSil(product.CihazAdi)">
+            <i class="fa fa-memory"></i> Cihaz Sil
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Cihaz Oluştur</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="CihazAdı">Cihaz Adı</label>
+                <input type="text" [(ngModel)]="product.CihazAdi" id="CihazAdi" class="form-control">
+            </div>
+            <div class="form-group mt-2">
+                <label for="CihazeUI">Cihaz eUİ</label>
+                <input type="text" [(ngModel)]="product.CihazeUI" id="CihazeUI" class="form-control">
+            </div>
+            <div class="form-group mt-2">
+                <button class="btn btn-primary w-100" (click)="urunEkle()">Cihaz Oluştur</button>
+            </div>
+        </div>        
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showAlert" class="alert alert-danger mt-3" role="alert">
+    Bu CihazeUI ile aynı ürün zaten var!
+  </div>

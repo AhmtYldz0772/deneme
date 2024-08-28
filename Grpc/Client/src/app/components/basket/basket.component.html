@@ -1,0 +1,166 @@
+<div class="custom-container">
+    <h2 class="alert alert-success mt-4">Cihazınız</h2>
+    
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Cihaz eUI ile ara">
+        </div>
+    </div>
+    
+    <table class="table table-hover mt-4">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Cihaz Adı</th>
+                <th>Cihaz eUİ</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let basket of filterBaskets(); let index = index">
+                <td>{{index + 1}}</td>
+                <td>{{basket.CihazAdi }}</td>
+                <td>{{basket.CihazeUI }}</td>
+                
+                <td> 
+                    <button class="btn btn-outline-danger" style="margin-right: 20px;" (click)="confirmAndSendEvent(basket.CihazeUI) "> Olaylar</button>
+                    <button class="btn btn-outline-danger" style="margin-right: 20px;" (click)="fetchTableData(); ">Tablo</button>                  
+                    <button class="btn btn-outline-danger" style="margin-right: 20px;" (click)="reset(basket.CihazeUI)">Reset</button>
+                    <button class="btn btn-outline-danger" style="margin-right: 20px;">  
+                        <a class="nav-link active text-danger" [routerLink]="['/chart', { cihazEui: basket.CihazeUI }]" aria-current="page">
+                          <i class="fa-solid fa-chart-line"></i>
+                          Grafik 
+                        </a>
+                    </button>
+                <!--    
+                    <button class="btn btn-outline-danger" style="margin-right: 20px;">  
+                        <a class="nav-link active text-danger" [routerLink]="['/dynamic-chart', { cihazEui: basket.CihazeUI }]" aria-current="page">
+                          <i class="fa-solid fa-chart-line"></i>
+                          DynamicGrafik 
+                        </a>
+                    </button> 
+                -->
+                    <button class="btn btn-outline-danger" style="margin-right: 20px;" (click)="device_info(basket.CihazeUI); device_info_get() ">Info</button> 
+                    
+                    <div class="btn-group" style="margin-right: 20px;">
+                        <button class="btn btn-outline-danger" (click)="onEventsClick()">
+                            <i class="fas fa-bell" [ngClass]="{'text-danger': newEventData, 'text-success': !newEventData}"></i>
+                        </button>
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 20px;">
+                            İşlemler
+                        </button>
+                        
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item" (click)="delete(basket.id)"> Sil</button></li>
+                            <li><button class="dropdown-item" (click)="sendDataToServer(basket.CihazeUI)">Zaman Güncelle</button></li>
+                            <li><button class="dropdown-item" (click)="confirmanThreshold(basket.CihazeUI)" data-bs-toggle="modal" data-bs-target="#exampleModalThresold">Threshold</button></li>
+                            <li><button class="dropdown-item" (click)="kalibrasyon(basket.CihazeUI)">Kalibre Et</button></li>
+                        </ul>
+                        
+                        <div *ngFor="let device of deviceData" class="mt-3" style="margin-left: 20px;">
+                            <div *ngIf="basket.CihazeUI === device.cihaz_eui">
+                                <!-- <div>Cihaz EUI: {{ device.cihaz_eui }}</div> -->
+                                <div>X Threshold: {{ device.x_threshold }}</div>
+                                <div>Y Threshold: {{ device.y_threshold }}</div>
+                                <div>Device Time: {{ device.device_time }}</div>
+                                <div>Calibration Status X: {{ device.calib_status_x }}</div>
+                                <div>Calibration Status y: {{ device.calib_status_y }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+   
+
+  <!-- Tablo -->
+  <div class="mt-4">
+    <h2 class="alert alert-success">Olaylar</h2>
+    <table class="table table-hover">
+        
+        <!-- Tablo başlığı -->
+        <thead>
+            
+            <tr>
+                <th>
+                    <samp>NO</samp>
+                    
+                </th>
+                <th>
+                    <samp>cihazEui</samp>
+                    <input type="text" class="form-control" placeholder="Değer giriniz" [(ngModel)]="inputValuesCihazEUI">
+                </th>
+                <th>
+                    <samp>TİP</samp>
+                    <input type="text" class="form-control" placeholder="Değer giriniz" [(ngModel)]="inputValuesTip">
+                </th>
+                <th>
+                    <samp>ALTİP</samp>
+                    <input type="text" class="form-control" placeholder="Değer giriniz" [(ngModel)]="inputValuesAltip">
+                </th>
+                <th>
+                    <samp>TİME</samp>
+                    <input type="text" class="form-control" placeholder="Değer giriniz" [(ngModel)]="inputValuesTime">
+                </th>
+                <th>
+                    <samp>TYPE</samp>
+                    <input type="number" class="form-control" placeholder="Değer giriniz" [(ngModel)]="inputValuesType">
+                </th>
+                <th>
+                    <samp>PEAK2</samp>
+                    <input type="number" class="form-control" placeholder="Değer giriniz" [(ngModel)]="inputValuesPeak2">
+                </th>
+                <th>
+                    <samp>FREQ</samp>
+                    <input type="number" class="form-control" placeholder="Değer giriniz" [(ngModel)]="inputValuesFreq">
+                </th>
+            </tr>
+        </thead>
+        <!-- Tablo içeriği -->
+        <tbody>
+            <tr *ngFor="let item of displayedTableData; let i = index">
+                <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+                <td>{{ item.cihaz_eUI }}</td>
+                <td>{{ item.tip }}</td>
+                <td>{{ item.altip }}</td>
+                <td>{{ item.zaman }}</td>
+                <td>{{ item.peak1 }}</td>
+                <td>{{ item.peak2 }}</td>
+                <td>{{ item.freq }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+ 
+    <!-- Sayfalama -->
+    <div class="pagination">
+        <button class="btn btn-primary" [disabled]="currentPage === 1" (click)="previousPage()">Önceki</button>
+        <button class="btn btn-primary" [disabled]="currentPage === totalPages" (click)="nextPage()">Sonraki</button>
+        <span>Sayfa {{ currentPage }} / {{ totalPages }}</span>
+    </div>
+  </div>
+   
+    <div class="modal fade" id="exampleModalThresold" tabindex="-1" aria-labelledby="exampleModalLabelThresold" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Thresold Güncelle</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="Threshold">Eski threshold degeri: {{ oldThresholdValue }}</label>
+                    <label for="Threshold">X Thresold Değeri: {{ thresholdValuex }}</label>
+                    <label for="Threshold">Y Thresold Değeri: {{ thresholdValuey }}</label>
+                    <input type="number" min="0" step="0.001" [(ngModel)]="newThresholdValue" class="form-control" placeholder="Yeni Threshold Değeri">
+                    <button class="btn btn-primary mt-3 custom-btn" (click)="onThresholdClick(newThresholdValue)" data-bs-dismiss="modal" aria-label="Close">Güncelle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4">
+        <textarea class="form-control mt-3" [(ngModel)]="eventData" style="height: 500px;"></textarea>
+    </div>
+  </div>
+  

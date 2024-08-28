@@ -1,0 +1,22 @@
+.red-icon {
+    color: red;
+  }
+  
+  .green-icon {
+    color: green;
+  }
+  .btn-outline-danger:hover .nav-link.active {
+    color: white;
+  }
+  .custom-btn {
+    transition: background-color 0.9s ease; 
+  }
+  
+  .custom-btn:hover {
+    background-color: #9bf380; 
+  }
+  .custom-container {
+    width: 96%; /* İhtiyacınıza göre yüzdelik genişlik belirleyin */
+    max-width: 1500px; /* Maksimum genişliği belirleyin */
+    margin: 0 auto; /* Ortalamak için */
+  }

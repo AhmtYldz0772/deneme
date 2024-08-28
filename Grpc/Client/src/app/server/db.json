@@ -1,0 +1,76 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "CihazAdi": "GRPC1",
+      "CihazeUI": "4c3b784abc584274",
+      "Threshold": "",
+      "Frenkas": ""
+    },
+    {
+      "id": 2,
+      "CihazAdi": "GRPC",
+      "CihazeUI": "4b0369740f7fdc16",
+      "Threshold": "",
+      "Frenkas": ""
+    },
+    {
+      "id": 3,
+      "CihazAdi": "GRPC2",
+      "CihazeUI": "b41ea297dadef868",
+      "Threshold": "",
+      "Frenkas": ""
+    },
+    {
+      "id": 4,
+      "CihazAdi": "GRPC3",
+      "CihazeUI": "2ba0e0f5506b17b7",
+      "Threshold": "",
+      "Frenkas": ""
+    },
+    {
+      "id": 5,
+      "CihazAdi": "GRPC4",
+      "CihazeUI": "da39331319b8fa74",
+      "Threshold": "",
+      "Frenkas": ""
+    }
+  ],
+  "baskets": [
+    {
+      "id": 3,
+      "CihazAdi": "GRPC2",
+      "CihazeUI": "b41ea297dadef868",
+      "Threshold": "",
+      "Frenkas": ""
+    },
+    {
+      "id": 4,
+      "CihazAdi": "GRPC3",
+      "CihazeUI": "2ba0e0f5506b17b7",
+      "Threshold": "",
+      "Frenkas": ""
+    },
+    {
+      "id": 2,
+      "CihazAdi": "GRPC",
+      "CihazeUI": "4b0369740f7fdc16",
+      "Threshold": "",
+      "Frenkas": ""
+    },
+    {
+      "id": 1,
+      "CihazAdi": "GRPC1",
+      "CihazeUI": "4c3b784abc584274",
+      "Threshold": "",
+      "Frenkas": ""
+    },
+    {
+      "id": 5,
+      "CihazAdi": "GRPC4",
+      "CihazeUI": "da39331319b8fa74",
+      "Threshold": "",
+      "Frenkas": ""
+    }
+  ]
+}

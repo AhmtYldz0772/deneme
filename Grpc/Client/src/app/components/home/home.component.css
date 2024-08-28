@@ -1,0 +1,13 @@
+.card-img-top{
+    width: 286px;
+    height: 286px;
+}
+.my-custom-warning {
+    background-color: #0d6efd;;
+    color: #ffffff; /* Yazı rengi */
+  }
+  
+  .my-custom-danger {
+    background-color: #3e3c3f;
+    color: #ffffff; /* Yazı rengi */
+  }

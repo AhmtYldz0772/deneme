@@ -1,0 +1,11 @@
+
+OpenDocument="main.c", FilePath="D:/Users/basakka/Desktop/nRF5_SDK_15.2.0_9412b96/examples/ble_peripheral/shm/main.c", Line=0
+OpenToolbar="Debug", Floating=0, x=0, y=0
+OpenWindow="Registers 1", DockArea=RIGHT, x=0, y=0, w=300, h=397, FilterBarShown=0, ToolBarShown=0, FilteredItems=[], RefreshRate=1
+OpenWindow="Source", x=0, y=0, w=0, h=0, FilterBarShown=0, ToolBarShown=0, ExecCountersShown=0
+OpenWindow="Memory 1", DockArea=BOTTOM, x=1, y=0, w=492, h=321, FilterBarShown=0, ToolBarShown=0, EditorAddress=0x30
+OpenWindow="Functions", DockArea=LEFT, x=0, y=0, w=300, h=397, FilterBarShown=1, ToolBarShown=0
+OpenWindow="Console", DockArea=BOTTOM, x=0, y=0, w=494, h=321, FilterBarShown=0, ToolBarShown=0
+TableHeader="Functions", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Address";"Size";"#Insts";"Source"], ColWidths=[306;77;49;57;206]
+TableHeader="Power Graph", SortCol="None", SortOrder="ASCENDING", VisibleCols=["Index";"Time";"Channel 0"], ColWidths=[72;102;108]
+TableHeader="Registers 1", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Auto";"Name";"Value";"Description"], ColWidths=[35;82;105;92]

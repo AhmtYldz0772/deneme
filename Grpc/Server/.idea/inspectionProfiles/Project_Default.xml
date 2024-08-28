@@ -1,0 +1,34 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyCompatibilityInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ourVersions">
+        <value>
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="2.7" />
+            <item index="1" class="java.lang.String" itemvalue="3.12" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="main.chirpstack_api" />
+          <option value="chirpstack_api.integration.UplinkEvent" />
+          <option value="main.api" />
+          <option value="main.datetime" />
+          <option value="main.loraserver_url" />
+          <option value="main.loraserver_user" />
+          <option value="main.loraserver_pass" />
+          <option value="grpc" />
+          <option value="chirpstack_api.as_pb" />
+          <option value="sshProject.__name" />
+          <option value="chirpstack_api.as_pb2" />
+          <option value="chirpstack_api.as_pb2_grpc" />
+          <option value="grpc.examples.python.helloworld.async_greeter_server_with_reflection.grpc_reflection" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
